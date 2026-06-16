@@ -23,7 +23,10 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
+/* Verhindert horizontales Scrollen, erlaubt aber vertikales Scrollen falls nötig */
+overflow-x: hidden;
+overflow-y: auto;
+padding: 20px 0;
 }
 
 /* Dunkler Nebel */
@@ -37,6 +40,7 @@ radial-gradient(circle,
 rgba(255,0,0,0.05),
 transparent 50%);
 animation:mist 25s linear infinite;
+z-index: 1;
 }
 
 @keyframes mist{
@@ -49,6 +53,7 @@ text-align:center;
 z-index:10;
 padding:30px;
 max-width:1000px;
+width: 100%;
 }
 
 .symbol{
@@ -69,6 +74,7 @@ letter-spacing:8px;
 text-shadow:
 0 0 10px #ff0000,
 0 0 30px #990000;
+word-wrap: break-word; /* Schützt vor Text-Umbruch-Fehlern */
 }
 
 .subtitle{
@@ -128,6 +134,53 @@ text-shadow:
 0 0 20px red,
 0 0 50px red;
 animation:pulse 2s infinite;
+}
+
+/* ==========================================================
+HANDY-OPTIMIERUNG (Für Bildschirme kleiner als 768px)
+========================================================== */
+@media (max-width: 768px) {
+.title {
+font-size: 2.2rem; /* Macht die Überschrift passend fürs Handy */
+letter-spacing: 4px;
+}
+
+.subtitle {
+font-size: 0.95rem;
+margin-bottom: 35px;
+padding: 0 10px;
+}
+
+.symbol {
+font-size: 60px;
+}
+
+.countdown {
+gap: 12px; /* Etwas engere Abstände für kompakte Displays */
+}
+
+.box {
+width: 140px; /* Perfekte Größe, damit auf Handys immer 2 Boxen nebeneinander passen */
+height: 140px;
+}
+
+.number {
+font-size: 2.8rem; /* Zahlen innerhalb der Boxen verkleinert */
+}
+
+.label {
+font-size: 0.8rem;
+letter-spacing: 1px;
+}
+
+.footer {
+margin-top: 40px;
+font-size: 0.9rem;
+}
+
+.finished {
+font-size: 2.2rem;
+}
 }
 </style>
 </head>
